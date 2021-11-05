@@ -48,10 +48,16 @@ pipeline {
         }
         
     }}
-        stage('email'){
-            	           steps {
-
-            mail bcc: '', body: 'tazzzzzzz', cc: '', from: '', replyTo: '', subject: 'hello update from aaa ', to: 'moetazbusiness@gmail.com'
-    }}
+        stage('Gmail')
+{
+	steps
+	{
+		emailext body: "*${currentBuild.currentResult}:* Job Name: 
+                ${env.JOB_NAME} || Build Number: ${env.BUILD_NUMBER}\n More 
+                information at: ${env.BUILD_URL}",
+		subject: 'Declarative Pipeline Build Status',
+		to: 'moetazbusiness@gmail.com'
+	}
+}
     
 }}
