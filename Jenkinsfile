@@ -39,7 +39,7 @@ pipeline {
 		   steps {
 		dir("DevOps") {
 			bat "docker build -t dev ."
-			//  all docker commands 
+			// 
 			bat "docker tag dev  moetazbrayek/devop:1"
 			bat"docker login -u moetazbrayek -p bouba13A*"
 			bat "docker push  moetazbrayek/devop:1"			
@@ -48,16 +48,10 @@ pipeline {
         }
         
     }}
-        stage('Gmail')
-{
-	steps
-	{
-		emailext body: "*${currentBuild.currentResult}:* Job Name: 
-                ${env.JOB_NAME} || Build Number: ${env.BUILD_NUMBER}\n More 
-                information at: ${env.BUILD_URL}",
-		subject: 'Declarative Pipeline Build Status',
-		to: 'moetazbusiness@gmail.com'
-	}
-}
+        stage('email'){
+            	           steps {
+
+            mail bcc: '', body: "Hello Moetaz \n information at: ${env.BUILD_URL}", cc: '', from: '', replyTo: '', subject: "${env.PROJECT_NAME} - Build # ${env.BUILD_NUMBER} - ${currentBuild.currentResult} ", to: 'moetazbusiness@gmail.com'
+    }}
     
 }}
