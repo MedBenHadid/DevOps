@@ -39,7 +39,7 @@ pipeline {
 		   steps {
 		dir("DevOps") {
 			bat "docker build -t dev ."
-			// 
+			//  all docker commands 
 			bat "docker tag dev  moetazbrayek/devop:1"
 			bat"docker login -u moetazbrayek -p bouba13A*"
 			bat "docker push  moetazbrayek/devop:1"			
