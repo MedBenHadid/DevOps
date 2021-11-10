@@ -1,11 +1,11 @@
 package tn.esprit.spring.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import tn.esprit.spring.entities.Mission;
-import tn.esprit.spring.exceptions.InvalidDatabaseOperationException;
 import tn.esprit.spring.services.MissionServiceImpl;
 
 import java.util.List;
@@ -27,9 +27,9 @@ public class RestControlMission implements IRestControlMission{
         return this.service.getPaginated(page,size,name,departement);
     }
     @Override
-    public Mission add(@Validated  Mission user) throws InvalidDatabaseOperationException {return this.service.add(user);}
+    public Mission add(@Validated  Mission user) throws Exception {return this.service.add(user);}
     @Override
-    public Mission update(@Validated Mission user) throws InvalidDatabaseOperationException {return this.service.update(user);}
+    public Mission update(@Validated Mission user) throws Exception {return this.service.update(user);}
 
     @Override
     public void delete(int missionId) {this.service.delete(missionId);}

@@ -1,6 +1,8 @@
 package tn.esprit.spring.services;
 
 import lombok.extern.slf4j.Slf4j;
+
+import org.apache.log4j.Logger;
 import org.junit.jupiter.api.*;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,8 @@ import java.util.Random;
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class MissionServiceImplTest {
+    private static final Logger log = Logger.getLogger(MissionServiceImplTest.class);
+
     @Autowired IMissionService missionService;
     @Autowired IDepartementService departementService;
     @Autowired DepartementRepository departementRepository;

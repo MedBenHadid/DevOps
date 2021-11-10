@@ -24,13 +24,13 @@ public class EntrepriseServiceImplTest {
     EntrepriseRepository er;
     @Test
     public void ajouterEntrepriseTest()  {
-        Entreprise ent=new Entreprise(1,"SSII Consulting","Cite El Ghazela");
+        Entreprise ent=new Entreprise("SSII Consulting","Cite El Ghazela");
         int a=es.ajouterEntreprise(ent);
         assertEquals(ent.getId(),a);
     }
     @Test
     public void ajouterEntrepriseTest2()  {
-        Entreprise ent=new Entreprise(1,null,null);
+        Entreprise ent=new Entreprise(null,null);
         int a=es.ajouterEntreprise(ent);
         assertEquals(0,a);
     }

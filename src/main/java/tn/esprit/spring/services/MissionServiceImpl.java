@@ -1,6 +1,7 @@
 package tn.esprit.spring.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.dao.NonTransientDataAccessException;
 import org.springframework.dao.RecoverableDataAccessException;
 import org.springframework.dao.TransientDataAccessException;
@@ -8,7 +9,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 import tn.esprit.spring.entities.Mission;
-import tn.esprit.spring.exceptions.InvalidDatabaseOperationException;
 import tn.esprit.spring.repository.MissionRepository;
 
 import javax.validation.constraints.NotNull;
@@ -21,20 +21,20 @@ public class MissionServiceImpl implements IMissionService{
     @Autowired
     public MissionServiceImpl(MissionRepository missionRepository){this.missionRepository = missionRepository;}
     @Override
-    public Mission add(@Validated Mission mission) throws InvalidDatabaseOperationException {
+    public Mission add(@Validated Mission mission) throws Exception {
         try {
             return missionRepository.save(mission);
         } catch (NonTransientDataAccessException | RecoverableDataAccessException | TransientDataAccessException e){
-            throw new InvalidDatabaseOperationException(e);
+            throw e;
         }
     }
 
     @Override
-    public Mission update(@Validated Mission mission) throws InvalidDatabaseOperationException{
+    public Mission update(@Validated Mission mission) throws Exception{
         try {
             return missionRepository.save(mission);
         } catch (NonTransientDataAccessException | RecoverableDataAccessException | TransientDataAccessException e){
-            throw new InvalidDatabaseOperationException(e);
+            throw e;
         }
     }
 
