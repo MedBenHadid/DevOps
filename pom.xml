@@ -123,14 +123,14 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
 					<image>
-						<name>espritchihab/${project.artifactId}:${project.version}</name>
+						<name>med21/${project.artifactId}:${project.version}</name>
 						<publish>true</publish>
 					</image>
 					<docker>
 						<publishRegistry>
-							<username>espritchihab</username>
+							<username>med21</username>
 							<url>https://registry.hub.docker</url>
-							<email>chihab.hajji@esprit.tn</email>
+							<email>mohamed.benhadid@esprit.tn</email>
 						</publishRegistry>
 					</docker>
 				</configuration>
@@ -163,7 +163,7 @@
 		<repository>
 			<id>nexus</id>
 			<name>Releases</name>
-			<url>https://50be-197-1-239-58.eu.ngrok.io/repository/maven-releases</url>
+			<url>https://c973-196-234-185-116.eu.ngrok.io/repository/maven-releases</url>
 		</repository>
 	</distributionManagement>
 </project>

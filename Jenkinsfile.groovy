@@ -40,7 +40,7 @@ pipeline {
         }
         stage('Build docker image') {
             steps {
-                sh "docker build -t espritchihab/${IMAGE}:${VERSION} ."
+                sh "docker build -t med21/${IMAGE}:${VERSION} ."
             }
         }
         stage('Login to docker') {
@@ -50,13 +50,13 @@ pipeline {
         }
         stage('Push to docker') {
             steps {
-                sh "docker push espritchihab/${IMAGE}:${VERSION}"
+                sh "docker push med21/${IMAGE}:${VERSION}"
             }
         }
         stage('Deploy to Nexus') {
             steps{
                 withMaven {
-                    sh "mvn clean package --settings settings.xml deploy:deploy-file -DgroupId=tn.esprit.spring -DartifactId=${IMAGE} -Dversion=${VERSION} -DgeneratePom=true -Dpackaging=jar -DrepositoryId=nexus -Durl=https://50be-197-1-239-58.eu.ngrok.io/repository/maven-releases/ -Dfile=target/${IMAGE}-${VERSION}.jar -DskipTests"
+                    sh "mvn clean package --settings settings.xml deploy:deploy-file -DgroupId=tn.esprit.spring -DartifactId=${IMAGE} -Dversion=${VERSION} -DgeneratePom=true -Dpackaging=jar -DrepositoryId=nexus -Durl=https://c973-196-234-185-116.eu.ngrok.io/repository/maven-releases/ -Dfile=target/${IMAGE}-${VERSION}.jar -DskipTests"
                     archiveArtifacts artifacts: '**/timesheet-*.jar', onlyIfSuccessful: false
                }
             }

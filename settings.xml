@@ -128,7 +128,7 @@ under the License.
         <server>
             <id>nexus</id>
             <username>admin</username>
-            <password>1Ac2620f</password>
+            <password>Mbh21820764</password>
             <releases><enabled>true</enabled></releases>
             <snapshots><enabled>true</enabled></snapshots>
         </server>
