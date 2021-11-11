@@ -6,7 +6,7 @@ pipeline {
         }
     }
     environment {
-        DOCKERHUB_CREDENTIALS = credentials('docker-login')
+        DOCKERHUB_CREDENTIALS = credentials('docker')
         IMAGE = readMavenPom().getArtifactId()
         VERSION = readMavenPom().getVersion()
     }
