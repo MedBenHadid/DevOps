@@ -15,7 +15,7 @@
 	<name>timesheet</name>
 	<description>timesheet</description>
 	<properties>
-		<sonar.projectKey>ESPRIT-TIMESHEET-DEVOPS_esprit-devops</sonar.projectKey>
+		<sonar.projectKey>MedBenHadid_DevOps</sonar.projectKey>
 		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
 	</properties>
 	<dependencies>
