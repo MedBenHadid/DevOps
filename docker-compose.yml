@@ -1,0 +1,77 @@
+version: "3.8"
+services:
+  sonarqube:
+    image: sonarqube:9.1-community
+    restart: on-failure
+    stop_grace_period: 3600ms
+    depends_on:
+      - init
+    environment:
+      - SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+      - "9092:9092"
+    volumes:
+      - sonarqube_conf:/opt/sonarqube/conf
+      - sonarqube_data:/opt/sonarqube/data
+      - sonarqube_extensions:/opt/sonarqube/extensions
+      - sonarqube_bundled-plugins:/opt/sonarqube/lib/bundled-plugins
+    networks:
+      - timesheet-net
+    ulimits:
+      nproc: 131072
+      nofile:
+        soft: 8192
+        hard: 131072
+  jenkins:
+    image: jenkins/jenkins:lts
+    restart: on-failure
+    privileged: true
+    user: root
+    ports:
+      - '8080:8080'
+      - '50000:50000'
+    container_name: jenkins
+    networks:
+      - timesheet-net
+    volumes:
+      - ~/jenkins:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /usr/bin/docker:/usr/bin/docker
+  nexus:
+    image: sonatype/nexus3
+    restart: on-failure
+    networks:
+      - timesheet-net
+    volumes:
+      - "nexus-data:/nexus-data"
+    ports:
+      - "8081:8081"
+      - "8083:8083"
+  timesheet-app:
+    build: .
+    networks:
+      - timesheet-net
+    ports:
+      - "9090:9090"
+  init:
+    image: bash
+    privileged: true
+    user: root
+    volumes:
+      - init-sonarqube.sh
+    command: [ "sh", "-e", "/opt/init-sonarqube.sh" ]
+networks:
+  timesheet-net:
+volumes:
+  jenkins:
+  nexus-data:
+  sonarqube_bundled-plugins:
+  sonarqube_conf:
+  sonarqube_data:
+  sonarqube_db:
+  sonarqube_extensions:
+  sonarqube_logs:
+  sonarqube_temp:
+
