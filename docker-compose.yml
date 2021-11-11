@@ -60,7 +60,7 @@ services:
     privileged: true
     user: root
     volumes:
-      - init-sonarqube.sh
+      - ./init.sh:/opt/init-sonarqube.sh
     command: [ "sh", "-e", "/opt/init-sonarqube.sh" ]
 networks:
   timesheet-net:
