@@ -6,7 +6,7 @@ tunnels:
     proto: http
     bind_tls: true
   timesheet:
-    addr: 80
+    addr: 9093
     proto: http
     bind_tls: true
   nexus:
@@ -14,6 +14,6 @@ tunnels:
     proto: http
     bind_tls: true
   jenkins:
-    addr: 8080
+    addr: 8000
     proto: http
     bind_tls: true

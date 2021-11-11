@@ -30,7 +30,7 @@ services:
     privileged: true
     user: root
     ports:
-      - '8080:8080'
+      - '8000:8080'
       - '50000:50000'
     container_name: jenkins
     networks:
@@ -54,7 +54,7 @@ services:
     networks:
       - timesheet-net
     ports:
-      - "9090:9090"
+      - "9093:9092"
   init:
     image: bash
     privileged: true
