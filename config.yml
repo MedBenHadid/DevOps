@@ -1,0 +1,19 @@
+region: eu
+web_addr: localhost:4040
+tunnels:
+  sonarqube:
+    addr: 9000
+    proto: http
+    bind_tls: true
+  timesheet:
+    addr: 80
+    proto: http
+    bind_tls: true
+  nexus:
+    addr: 8081
+    proto: http
+    bind_tls: true
+  jenkins:
+    addr: 8080
+    proto: http
+    bind_tls: true
