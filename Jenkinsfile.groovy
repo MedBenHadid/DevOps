@@ -30,6 +30,7 @@ pipeline {
                 withMaven{
                     sh "mvn -B org.jacoco:jacoco-maven-plugin:prepare-agent-integration failsafe:integration-test failsafe:verify -DskipTests"
                 }
+//                step([$class: 'JUnitResultArchiver', testResults: '**/target/failsafe-reports/TEST-*.xml'])
             }
         }
         stage('Build'){
