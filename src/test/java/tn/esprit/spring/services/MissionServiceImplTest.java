@@ -90,6 +90,7 @@ class MissionServiceImplTest {
         missionService.delete(mission.getId());
         Optional<Mission> afterDelete = missionService.getById(mission.getId());
         Assertions.assertFalse(afterDelete.isPresent(),"Succesfully deleted");
+        //Assertions.assertTrue(size > missionService.getPaginated(0,5,mission.getName(),mission.getDepartement().getName()).size(), "Deleted from paginated");
     }
 
     @Order(2)
@@ -121,3 +122,4 @@ class MissionServiceImplTest {
     }
 }
 
+// mvn -Dtest=MissionServiceImplTest test
