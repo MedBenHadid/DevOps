@@ -11,7 +11,7 @@
 	<packaging>jar</packaging>
 	<groupId>tn.esprit.spring</groupId>
 	<artifactId>timesheet</artifactId>
-	<version>1.4</version>
+	<version>1.6</version>
 	<name>timesheet</name>
 	<description>timesheet</description>
 	<properties>
