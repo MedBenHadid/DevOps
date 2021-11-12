@@ -71,7 +71,11 @@ pipeline {
             mail to: 'mohamed.benhadid@esprit.tn',
                     subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
                     body: "Something is wrong with ${env.BUILD_URL}'s test"
-
+        }
+        success {
+            mail to: 'mohamed.benhadid@esprit.tn',
+                    subject: "Successfull Pipeline: ${currentBuild.fullDisplayName}",
+                    body: "${env.BUILD_URL}'s test and build all passed"
         }
 
     }
